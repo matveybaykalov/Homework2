@@ -18,13 +18,14 @@ string CharToString(char ch){
 }
 
 bool IsNumber (string& word){
-    bool flag = true;
+    int CountOfPoints = 0;
     for (char ch : word){
-        if(!(flag && ch >= 48 && ch <= 57)){
-            return false;
-        }
         if(ch == '.'){
-            flag = false;
+            CountOfPoints++;
+            continue;
+        }
+        if(!(CountOfPoints <= 1 && ch >= 48 && ch <= 57)){
+            return false;
         }
     }
     return true;
